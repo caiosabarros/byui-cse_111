@@ -109,6 +109,42 @@ def get_future():
     return random.choice(words)
 # end tenses functions
 
+def get_preposition():
+    """Return a randomly chosen preposition
+    from this list of prepositions:
+        "about", "above", "across", "after", "along",
+        "around", "at", "before", "behind", "below",
+        "beyond", "by", "despite", "except", "for",
+        "from", "in", "into", "near", "of",
+        "off", "on", "onto", "out", "over",
+        "past", "to", "under", "with", "without"
+
+    Return: a randomly chosen preposition.
+    """
+
+    prepositions = ["about", "above", "across", "after", "along","around", "at", "before", "behind", "below", "beyond", "by", "despite", "except", "for", "from", "in", "into", "near", "of", "off", "on", "onto", "out", "over", "past", "to", "under", "with", "without"]
+
+    return random.choice(prepositions)
+
+def get_prepositional_phrase(quantity):
+    """Build and return a prepositional phrase composed
+    of three words: a preposition, a determiner, and a
+    noun by calling the get_preposition, get_determiner,
+    and get_noun functions.
+
+    Parameter
+        quantity: an integer that determines if the
+            determiner and noun in the prepositional
+            phrase returned from this function should
+            be single or pluaral.
+    Return: a prepositional phrase.
+    """
+    det = get_determiner(quantity)
+    noun = get_noun(quantity)
+    prep = get_preposition()
+
+    return f"{det} {prep} {noun}"
+
 
 def make_sentence(quantity, tense):
     """Build and return a sentence with three words:
@@ -121,8 +157,11 @@ def make_sentence(quantity, tense):
     determiner = get_determiner(quantity)
     noun = get_noun(quantity)
     verb = get_verb(quantity, tense)
+    prep_phrase = get_prepositional_phrase(quantity)
+    second_prep_phrase = get_prepositional_phrase(quantity)
 
-    print(f"{determiner.capitalize()} {noun} {verb}")
+    # EXCEED REQUIREMENTS: two prepositional phrases
+    print(f"{determiner.capitalize()} {noun} {verb} {prep_phrase} {second_prep_phrase}")
 
 
 # six calls to main function
